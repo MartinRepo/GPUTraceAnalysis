@@ -13,13 +13,14 @@ It aggregates token-level data into time buckets, computes GPU demand, and visua
   * Aggregated CSV showing GPU usage and free capacity
   * Line chart of GPU demand vs. total capacity over time
 
----
-
 ## Environment Setup
 
 1. **Install dependencies**
 
    ```bash
+   conda create -n trace python=3.12 -y
+   conda activate trace
+
    pip install pandas numpy matplotlib
    ```
 
@@ -29,8 +30,6 @@ It aggregates token-level data into time buckets, computes GPU demand, and visua
    git clone <repo-url>
    cd <repo-name>
    ```
-
----
 
 ## Download Datasets
 
@@ -48,8 +47,6 @@ datasets/
  └─ region2.csv   # Conversation dataset
 ```
 
----
-
 ## Configuration
 
 Edit the top of the Python script to customize runtime parameters:
@@ -66,14 +63,12 @@ Edit the top of the Python script to customize runtime parameters:
 | `DISABLE_PLOT`        | `False`                                               | Disable plot generation if `True`                                             |
 | `DEFAULT_OUTPUT_PNG`  | `"results/gpu_usage_over_{TIME_BUCKET}_{REGION}.png"` | Output plot path                                                              |
 
----
-
 ## Run the Analysis
 
 Run the main analysis script:
 
 ```bash
-python analysis.py
+python get_free_gpu.py
 ```
 
 This will:
@@ -109,15 +104,11 @@ The plot visualizes:
 * **Orange:** Total GPU capacity
 * **Green:** Free GPUs over time
 
----
-
 ## Tips
 
 * A warning like `[warn] Dropping X unparsable TIMESTAMP rows.` means malformed timestamps were safely skipped.
 * Adjust `GPU_TOKENS_PER_UNIT` to simulate different GPU hardware capacities.
 * Compare `region1` vs. `region2` to evaluate cross-region load balancing.
-
----
 
 ## Example Commands
 
