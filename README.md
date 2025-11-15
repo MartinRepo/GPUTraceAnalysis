@@ -68,7 +68,7 @@ Edit the top of the Python script to customize runtime parameters:
 Run the main analysis script:
 
 ```bash
-python get_free_gpu.py
+python get_free_gpu_azure.py
 ```
 
 This will:
@@ -118,4 +118,27 @@ python analysis.py
 
 # Run analysis for region2
 REGION="region2" python analysis.py
+```
+
+# Citations
+```
+@inproceedings{stojkovic2025dynamollm,
+  title={Dynamollm: Designing llm inference clusters for performance and energy efficiency},
+  author={Stojkovic, Jovan and Zhang, Chaojie and Goiri, {\'I}{\~n}igo and Torrellas, Josep and Choukse, Esha},
+  booktitle={2025 IEEE International Symposium on High Performance Computer Architecture (HPCA)},
+  pages={1348--1362},
+  year={2025},
+  organization={IEEE}
+}
+```
+```
+@inproceedings{qlm2024patke,
+  author = {Qiu, Haoran and Biswas, Anish and Zhao, Zihan and Mohan, Jayashree and Khare, Alind and Choukse, Esha and Goiri, {\'I}{\~n}igo and Zhang, Zeyu and Shen, Haiying and Bansal, Chetan and Ramjee, Ramachandran and Fonseca, Rodrigo},
+  title = {ModServe: Modality- and Stage-Aware Resource Disaggregation for Scalable Multimodal Model Serving},
+  year = {2025},
+  publisher = {Association for Computing Machinery},
+  address = {New York, NY, USA},
+  booktitle = {Proceedings of the 2025 ACM Symposium on Cloud Computing (SoCC 2025)},
+  location = {Virtual},
+}
 ```

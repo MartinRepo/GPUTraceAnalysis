@@ -2,15 +2,16 @@ TIME_BUCKET = "15min"
 GPU_TOKENS_PER_UNIT = 1_000_000
 TOTAL_GPU_OVERRIDE = None
 DEFAULT_TIMEZONE = "UTC"
-REGION = "region1"
-DEFAULT_INPUT_CSV = f"datasets/{REGION}.csv"
-DEFAULT_OUTPUT_CSV = f"results/gpu_usage_over_{TIME_BUCKET}_{REGION}.csv"
+REGION = "region2"
+DEFAULT_INPUT_CSV = f"datasets/azure/{REGION}.csv"
+DEFAULT_OUTPUT_CSV = f"results/azure/{TIME_BUCKET}/gpu_usage_over_{TIME_BUCKET}_{REGION}.csv"
 DISABLE_PLOT = False
-DEFAULT_OUTPUT_PNG = f"results/gpu_usage_over_{TIME_BUCKET}_{REGION}.png"
+DEFAULT_OUTPUT_PNG = f"results/azure/{TIME_BUCKET}/gpu_usage_over_{TIME_BUCKET}_{REGION}.png"
 
 import math
 import pandas as pd
 import numpy as np
+import os
 from pathlib import Path
 
 
@@ -119,6 +120,7 @@ def try_plot(df: pd.DataFrame, out_png: Path, disabled: bool):
 
     fig.autofmt_xdate()
     fig.tight_layout()
+    os.makedirs(os.path.dirname(out_png), exist_ok=True)
     fig.savefig(out_png, dpi=150)
     plt.close(fig)
 
@@ -132,6 +134,7 @@ def main():
     agg = aggregate_by_bucket(df, bucket=bucket)
     result = compute_gpu_metrics(agg, gpu_tokens_per_unit=gpu_tokens_per_unit, total_gpu_override=total_gpu_override)
 
+    os.makedirs(os.path.dirname(DEFAULT_OUTPUT_CSV), exist_ok=True)
     save_results(result, DEFAULT_OUTPUT_CSV)
     try_plot(result, DEFAULT_OUTPUT_PNG, disabled=DISABLE_PLOT)
     print(f"[Done] Results Wrote: {DEFAULT_OUTPUT_CSV}")
