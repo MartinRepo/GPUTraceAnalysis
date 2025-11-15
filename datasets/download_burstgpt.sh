@@ -20,6 +20,10 @@ echo "Downloading BurstGPT CSV files..."
 for f in "${FILES[@]}"; do
     echo "Downloading $f ..."
     wget -q --show-progress "${BASE_URL}/${f}"
+    if [ $? -ne 0 ]; then
+      echo "Error: Failed to download $f" >&2
+      exit 1
+    fi
 done
 
 echo "Download complete. Files saved in ./burstgpt_data/"

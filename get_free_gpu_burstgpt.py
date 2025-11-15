@@ -16,7 +16,7 @@ REGION_NAMES: Dict[str, str] = {
     "datasets/burstgpt_data/BurstGPT_without_fails_2.csv": "Region-B",
 }
 TIME_UNIT_SECONDS: int = 3600
-TOKENS_PER_GPU_PER_HOUR: float = 4_000_00
+TOKENS_PER_GPU_PER_HOUR: float = 4_00_000
 USE_TOTAL_TOKENS: bool = False
 OUTPUT_DIR: str = "results/burstgpt"
 PLOT_FORMAT: str = "png"
