@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e  
 
-DATA_DIR="datasets"
+DATA_DIR="datasets/azure"
 
 mkdir -p "$DATA_DIR"
 
