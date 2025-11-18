@@ -2,6 +2,11 @@
 
 # Create directory
 mkdir -p datasets/burstgpt_data
+if [ ! -w datasets/burstgpt_data ]; then
+  echo "Error: No write permission to datasets/burstgpt_data" >&2
+  exit 1
+fi
+
 cd datasets/burstgpt_data
 
 # Base URL of the release

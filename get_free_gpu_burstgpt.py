@@ -1,6 +1,6 @@
 import math
 from pathlib import Path
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 import pandas as pd
 import numpy as np
@@ -30,7 +30,7 @@ def compute_gpu_usage_for_region(
     csv_path: Path,
     tokens_per_gpu_per_time_unit: float,
     time_unit_seconds: int = TIME_UNIT_SECONDS,
-    region_name: str | None = None,
+    region_name: Optional[str] = None,
 ) -> pd.DataFrame:
     if region_name is None:
         region_name = csv_path.stem
